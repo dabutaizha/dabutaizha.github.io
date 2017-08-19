@@ -94,12 +94,22 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="7月刚开始实习，第一周的时候，老大让我去写一份关于现有项目在Android Studio下生成JavaDoc的注释模版，我觉得应该挺简单的啊，结果实践中发现Android Studio在对注释模版的支持特别差劲，有好多小的坑，这里做个记录。  🎃让我们从头说起吧～ 我们知道Java中有三种注释语句 //用于单行注释/*…*/用于多行注释，从/开始，到/结束，不能嵌套/**…*/则是为支持jdk工">
+<meta property="og:type" content="article">
+<meta property="og:title" content="博客搭建测试">
+<meta property="og:url" content="http://yoursite.com/2017/08/19/AndroidStudio中为项目生成JavaDoc文档的坑/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="7月刚开始实习，第一周的时候，老大让我去写一份关于现有项目在Android Studio下生成JavaDoc的注释模版，我觉得应该挺简单的啊，结果实践中发现Android Studio在对注释模版的支持特别差劲，有好多小的坑，这里做个记录。  🎃让我们从头说起吧～ 我们知道Java中有三种注释语句 //用于单行注释/*…*/用于多行注释，从/开始，到/结束，不能嵌套/**…*/则是为支持jdk工">
+<meta property="og:image" content="https://2.bp.blogspot.com/-VQmZ0ZHgGkU/WDEdGA4pq0I/AAAAAAAAHlU/W5PTOI2hC2gW0_j6LGdhdoDSZBYPGLMrACLcB/s1600/20161119-carnivorousJavadoc.png">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1763639-c3fec099e5edee65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1763639-e7c0b29041e54af2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1763639-74d788233a89fc51.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1763639-4bf9018cc0c679b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-08-19T07:39:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="博客搭建测试">
+<meta name="twitter:description" content="7月刚开始实习，第一周的时候，老大让我去写一份关于现有项目在Android Studio下生成JavaDoc的注释模版，我觉得应该挺简单的啊，结果实践中发现Android Studio在对注释模版的支持特别差劲，有好多小的坑，这里做个记录。  🎃让我们从头说起吧～ 我们知道Java中有三种注释语句 //用于单行注释/*…*/用于多行注释，从/开始，到/结束，不能嵌套/**…*/则是为支持jdk工">
+<meta name="twitter:image" content="https://2.bp.blogspot.com/-VQmZ0ZHgGkU/WDEdGA4pq0I/AAAAAAAAHlU/W5PTOI2hC2gW0_j6LGdhdoDSZBYPGLMrACLcB/s1600/20161119-carnivorousJavadoc.png">
 
 
 
@@ -128,13 +138,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/08/19/AndroidStudio中为项目生成JavaDoc文档的坑/"/>
 
 
 
 
 
-  <title>Hexo</title>
+  <title>博客搭建测试 | Hexo</title>
   
 
 
@@ -153,9 +163,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -238,9 +246,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -270,9 +278,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/19/AndroidStudio中为项目生成JavaDoc文档的坑/" itemprop="url">博客搭建测试</a></h1>
+          <h1 class="post-title" itemprop="name headline">博客搭建测试</h1>
         
 
         <div class="post-meta">
@@ -322,9 +328,7 @@
       
 
       
-        
-          
-            <p>7月刚开始实习，第一周的时候，老大让我去写一份关于现有项目在Android Studio下生成JavaDoc的注释模版，我觉得应该挺简单的啊，结果实践中发现Android Studio在对注释模版的支持特别差劲，有好多小的坑，这里做个记录。</p>
+        <p>7月刚开始实习，第一周的时候，老大让我去写一份关于现有项目在Android Studio下生成JavaDoc的注释模版，我觉得应该挺简单的啊，结果实践中发现Android Studio在对注释模版的支持特别差劲，有好多小的坑，这里做个记录。</p>
 <hr>
 <p>🎃让我们从头说起吧～</p>
 <p>我们知道Java中有三种注释语句</p>
@@ -379,8 +383,6 @@
 <p>多行注释按照<br>/<em>注释内容</em>/</p>
 <p>这篇文章所使用的AS版本为2.3.3，仅供参考，欢迎大家指出其中所存在问题😁</p>
 
-          
-        
       
     </div>
     
@@ -397,140 +399,28 @@
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/18/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/18/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-18T17:43:10+08:00">
-                2017-08-18
-              </time>
+              <a href="/2017/08/18/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -540,10 +430,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -551,6 +442,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -739,10 +634,10 @@
   
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
-  
+
 
   
 

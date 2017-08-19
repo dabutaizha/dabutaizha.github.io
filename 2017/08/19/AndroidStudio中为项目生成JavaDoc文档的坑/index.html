@@ -106,7 +106,7 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1763639-e7c0b29041e54af2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1763639-74d788233a89fc51.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1763639-4bf9018cc0c679b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-08-19T07:42:59.000Z">
+<meta property="og:updated_time" content="2017-08-19T11:41:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AndroidStudio中为项目生成JavaDoc文档的坑">
 <meta name="twitter:description" content="7月刚开始实习，第一周的时候，老大让我去写一份关于现有项目在Android Studio下生成JavaDoc的注释模版，我觉得应该挺简单的啊，结果实践中发现Android Studio在对注释模版的支持特别差劲，有好多小的坑，这里做个记录。  🎃让我们从头说起吧～ 我们知道Java中有三种注释语句 //用于单行注释/*…*/用于多行注释，从/开始，到/结束，不能嵌套/**…*/则是为支持jdk工">
@@ -372,11 +372,9 @@
  </em>@param position 位置position<br> <em>@param url 链接url
  </em>@return 对象Picture<br> <em>@throws Exception 抛出的异常
  </em>/<br>private Picture getPicture(int position, String url) throws Exception {<br>    return new Picture();<br>}</p>
-<p>还行，但是不是还少点什么，缺少一个描述！<br>这时候我们便可以使用Live Tmplates功能了，加一个方法的模板，名字设置为doc_methood，模板内容很简单<br>/<em>*
- </em>Description :<br> */<br>连个变量都没有，因为变量Fix doc comment会帮我们补全的</p>
+<p>还行，但是不是还少点什么，缺少一个描述！<br>这时候我们便可以使用Live Tmplates功能了，加一个方法的模板，名字设置为doc_methood，模板内容很简单<br>/**<br> *Description :<br> */<br>连个变量都没有，因为变量Fix doc comment会帮我们补全的</p>
 <p>所以我们如何给方法生成注释呢<br>先在方法名上一行输入doc_method生成一个简单的模板，然后按ctrl+反斜杠使用fix doc comment功能补全所有参数，一秒钟搞定</p>
-<p>🍃最后至于静态常量，我们还是选择Live Tmplates为其便写个模板，格式与方法模板一样<br>/<em>*
- </em>Description :<br> */</p>
+<p>🍃最后至于静态常量，我们还是选择Live Tmplates为其便写个模板，格式与方法模板一样<br>/**<br> *Description :<br> */</p>
 <hr>
 <p>头文件，方法，静态常量注释都按照Javadoc要求编写，我们最终可以使用AndroidStudio的Generate doc功能输出一份Javadoc的文档，方便所有开发人员使用学习。</p>
 <p>最后提及下方法内部注释，这些内容虽然不会录入Javadoc文档，为了美观还是建议有个规范</p>

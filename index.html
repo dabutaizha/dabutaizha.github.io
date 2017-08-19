@@ -94,13 +94,16 @@
 
 
 
+<meta name="description" content="一个脱离了高级趣味的人">
 <meta property="og:type" content="website">
 <meta property="og:title" content="DBTZ’S LIFE">
 <meta property="og:url" content="http://yoursite.com/index.html">
 <meta property="og:site_name" content="DBTZ’S LIFE">
+<meta property="og:description" content="一个脱离了高级趣味的人">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DBTZ’S LIFE">
+<meta name="twitter:description" content="一个脱离了高级趣味的人">
 
 
 
@@ -109,7 +112,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Mist',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"always","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: true,
@@ -202,22 +205,22 @@
         </li>
       
         
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
           </a>
         </li>
       
@@ -259,7 +262,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dabutaizha">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -325,62 +328,18 @@
       
         
           
-            <p>7月刚开始实习，第一周的时候，老大让我去写一份关于现有项目在Android Studio下生成JavaDoc的注释模版，我觉得应该挺简单的啊，结果实践中发现Android Studio在对注释模版的支持特别差劲，有好多小的坑，这里做个记录。</p>
-<hr>
-<p>🎃让我们从头说起吧～</p>
-<p>我们知道Java中有三种注释语句</p>
-<p><strong>//</strong><br>用于单行注释<br><strong>/*…*/</strong><br>用于多行注释，从/<em>开始，到</em>/结束，不能嵌套<br><strong>/**…*/</strong><br>则是为支持jdk工具javadoc.exe而特有的注释语句，而这种注释是我们这里最为关注的一种，因为javadoc 工具能从java源文件中读取第三种注释，并能识别注释中用@标识的一些特殊变量，制作成Html格式的类说明文档。</p>
-<p>javadoc不但能对一个 java源文件生成注释文档，而且能对目录和包生成交叉链接的html格式的类说明文档，类似于我们经常查阅的JavaAPI文档，AndroidAPI文档一样，我们的项目也需要这样一份文档来方便开发人员查阅使用，而这些的前提便是我们的注释需要按照一定格式来编写。<br><img src="https://2.bp.blogspot.com/-VQmZ0ZHgGkU/WDEdGA4pq0I/AAAAAAAAHlU/W5PTOI2hC2gW0_j6LGdhdoDSZBYPGLMrACLcB/s1600/20161119-carnivorousJavadoc.png" alt="一个简单的java文件利用Javadoc生成的html的效果"><br>还有需要注意的是javadoc可以将java文件中的文档注释生成为html文件并显示出来，那么既然这样我们如果在注释中使用html的标签会不会生效的，答案是肯定的，<pr>换行符 <b></b>段落 <li>列表等都是很常用的标签，但是这些是需要我们自己视情况添加的，运用得当的话生成的文档自然更加美观，可读性更高。(还有代码逼格+30%的增幅效果)</li></pr></p>
-<hr>
-<p>🎃下面我们回到主题，Javadoc这么好用，我们该按什么样的格式编写适合Javadoc的注释呢，AndroidStudio为我们准备了相关辅助功能（虽然暂时或许还不是很完善）</p>
-<p>🍃首先是类，接口这些文件的头文件(就是会出现在import下方，文件名上方的注释)，我们需要使用什么功能怎么编写呢</p>
-<p>IDE提供了一个File Header的设置功能，File - Setting - Editor - File and Code Templates - Include - File Header<br>(可参考下方截图)</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1763639-c3fec099e5edee65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="设置File Header"></p>
-<p>窗体的右侧便是头文件模板的编写窗口，具体编写方法右下方也有解释，就不过多解释了</p>
-<p>设置成功后我们每次新建Java文件IDE便会自动帮我们补充适用于Javadoc的头文件注释，我们唯一需要做的便是补充Description条目即可</p>
-<p>这样我们便解决了新建Java文件，头文件生成的问题，但我们别忘了那些原有的原有的Java文件，他们并不会跟着自动生成头文件，那么该怎么处理呢</p>
-<p>🍃这时候我们便需要用到Live Tmplates功能，File - Setting - Editor - Live Tmplates</p>
-<p>(可参考下方截图)</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1763639-e7c0b29041e54af2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="在Live Tmplates中设置老文件适用的File Header"><br>窗体的右侧编辑区的加号可以增加模板组或单个模板，一般我们先增加一个模板组，然后在模板组里编写各种模板，包括我们这里需要的头文件模板</p>
-<p>解释下这个窗口的右下方的编辑区</p>
-<ul>
-<li>Abbreviation:即你为这模板的命名，这个命名会成为你调用它的指令(比如你编写了名为一个doc_header的头文件模板，当你想使用它的时候，只需在文件的类名或接口名上一行输入doc_header，IDE便会弹出添加注释模板选项)</li>
-<li>Description:对于这个模板的描述</li>
-<li>Tmplate text:即编写模板的窗口，编写方法也很简单，只要记住被$符号包起来的会成为你需要编写的变量，可以点击Edit variables按钮对变量设置函数</li>
-<li>Applicable in java:在这里设置模板使用的语言以及场景，选择java-declaration即可</li>
-</ul>
-<p>为了老文件生成的头文件能够与新建文件的头文件格式一致，我们还是按照上面File Header的格式编写模板</p>
-<p>具体模板如下:<br>/<em>*
- </em>Copyright (C) $YEAR$ Unicorn, Inc.<br> <em>Description : 
- </em>Created by $USER$ on $DATE$ $TIME$.<br> */</p>
-<p>其中变量的函数设置如下</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1763639-74d788233a89fc51.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="变量的函数设置"></p>
-<p>这里有一点需要注意，我这个版本的AndroidStudio目前还没有year()函数，所以这里暂时用date()代替下，每次生成后需要手动删掉date()的多余部分。</p>
-<p>至此，AndroidStudio下适用用于Javadoc的头文件注释生成方法我们已经说完了，当然一个完整的Javadoc文档还有方法注释以及静态常态注释</p>
-<p>🍃接下来我们来关注方法以及静态常量的注释怎么生成</p>
-<p>可能你已经知道了，依旧是使用Live Tmplates功能，编写方法的模板；编写设置参数，返回值，异常等变量，然后为这些变量赋值函数</p>
-<p>但其实这些函数是不会生效的，因为AndroidStudio暂时不支持自定义方法使用模板函数，也就是说对自定义方法使用这些模板，变量会是是空，这样就没有什么意义了(这个设定太坑了)</p>
-<p>那我们该怎么做？天无绝人之路AndroidStudio中还藏有一个名叫Fix doc comment的方法</p>
-<p>我们可以在Setting中直接搜索fix doc comment，我们需要做的就是双击给这个功能设置一个快捷键，这样我们就可以使它为我们的方法生成注释了</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1763639-4bf9018cc0c679b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="设置fix doc comment功能的快捷键"></p>
-<p>比如我们设置成Alt+反斜杠后，我们只需要将鼠标放在我们的自定义方法名上使用组合键即可</p>
-<p>最终效果示例如下:<br>/<em>*
- </em>@param position 位置position<br> <em>@param url 链接url
- </em>@return 对象Picture<br> <em>@throws Exception 抛出的异常
- </em>/<br>private Picture getPicture(int position, String url) throws Exception {<br>    return new Picture();<br>}</p>
-<p>还行，但是不是还少点什么，缺少一个描述！<br>这时候我们便可以使用Live Tmplates功能了，加一个方法的模板，名字设置为doc_methood，模板内容很简单<br>/<em>*
- </em>Description :<br> */<br>连个变量都没有，因为变量Fix doc comment会帮我们补全的</p>
-<p>所以我们如何给方法生成注释呢<br>先在方法名上一行输入doc_method生成一个简单的模板，然后按ctrl+反斜杠使用fix doc comment功能补全所有参数，一秒钟搞定</p>
-<p>🍃最后至于静态常量，我们还是选择Live Tmplates为其便写个模板，格式与方法模板一样<br>/<em>*
- </em>Description :<br> */</p>
-<hr>
-<p>头文件，方法，静态常量注释都按照Javadoc要求编写，我们最终可以使用AndroidStudio的Generate doc功能输出一份Javadoc的文档，方便所有开发人员使用学习。</p>
-<p>最后提及下方法内部注释，这些内容虽然不会录入Javadoc文档，为了美观还是建议有个规范</p>
-<p>单行注释按照<br>//注释内容</p>
-<p>多行注释按照<br>/<em>注释内容</em>/</p>
-<p>这篇文章所使用的AS版本为2.3.3，仅供参考，欢迎大家指出其中所存在问题😁</p>
+          7月刚开始实习，第一周的时候，老大让我去写一份关于现有项目在Android Studio下生成JavaDoc的注释模版，我觉得应该挺简单的啊，结果实践中发现Android Studio在对注释模版的支持特别差劲，有好多小的坑，这里做个记录。
 
-          
+🎃让我们从头说起吧～
+我们知道Java中有三种注释语句
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/08/19/AndroidStudio中为项目生成JavaDoc文档的坑/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -448,11 +407,11 @@
       <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
+               src="/images/avatar.png"
                alt="dabutaizha" />
           <p class="site-author-name" itemprop="name">dabutaizha</p>
            
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-description motion-element" itemprop="description">一个脱离了高级趣味的人</p>
           
         </div>
         <nav class="site-state motion-element">

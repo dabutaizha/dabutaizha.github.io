@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -98,8 +98,9 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="AndroidStudio中为项目生成JavaDoc文档的坑">
 <meta property="og:url" content="http://yoursite.com/2017/08/19/AndroidStudio中为项目生成JavaDoc文档的坑/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="DBTZ’S LIFE">
 <meta property="og:description" content="7月刚开始实习，第一周的时候，老大让我去写一份关于现有项目在Android Studio下生成JavaDoc的注释模版，我觉得应该挺简单的啊，结果实践中发现Android Studio在对注释模版的支持特别差劲，有好多小的坑，这里做个记录。  🎃让我们从头说起吧～ 我们知道Java中有三种注释语句 //用于单行注释/*…*/用于多行注释，从/开始，到/结束，不能嵌套/**…*/则是为支持jdk工">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://2.bp.blogspot.com/-VQmZ0ZHgGkU/WDEdGA4pq0I/AAAAAAAAHlU/W5PTOI2hC2gW0_j6LGdhdoDSZBYPGLMrACLcB/s1600/20161119-carnivorousJavadoc.png">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1763639-c3fec099e5edee65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1763639-e7c0b29041e54af2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -117,14 +118,14 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: true,
     duoshuo: {
       userId: '0',
-      author: 'Author'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -144,7 +145,7 @@
 
 
 
-  <title>AndroidStudio中为项目生成JavaDoc文档的坑 | Hexo</title>
+  <title>AndroidStudio中为项目生成JavaDoc文档的坑 | DBTZ’S LIFE</title>
   
 
 
@@ -156,7 +157,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -174,7 +175,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Hexo</span>
+        <span class="site-title">DBTZ’S LIFE</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -204,7 +205,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            首页
           </a>
         </li>
       
@@ -214,7 +215,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            归档
           </a>
         </li>
       
@@ -224,7 +225,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            Tags
+            标签
           </a>
         </li>
       
@@ -264,13 +265,13 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/19/AndroidStudio中为项目生成JavaDoc文档的坑/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
+      <meta itemprop="name" content="dabutaizha">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="DBTZ’S LIFE">
     </span>
 
     
@@ -288,9 +289,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-19T13:39:27+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-19T13:39:27+08:00">
                 2017-08-19
               </time>
             
@@ -455,8 +456,8 @@
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
-               alt="John Doe" />
-          <p class="site-author-name" itemprop="name">John Doe</p>
+               alt="dabutaizha" />
+          <p class="site-author-name" itemprop="name">dabutaizha</p>
            
               <p class="site-description motion-element" itemprop="description"></p>
           
@@ -467,7 +468,7 @@
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
                 <span class="site-state-item-count">1</span>
-                <span class="site-state-item-name">posts</span>
+                <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
@@ -516,22 +517,22 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">John Doe</span>
+  <span class="author" itemprop="copyrightHolder">dabutaizha</span>
 
   
 </div>
 
 
   <div class="powered-by">
-    Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+    由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
   </div>
 
   <span class="post-meta-divider">|</span>
 
   <div class="theme-info">
-    Theme &mdash;
+    主题 &mdash;
     <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-      NexT.Muse
+      NexT.Mist
     </a>
   </div>
 

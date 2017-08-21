@@ -106,7 +106,7 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1763639-e7c0b29041e54af2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1763639-74d788233a89fc51.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1763639-4bf9018cc0c679b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-08-19T11:41:22.000Z">
+<meta property="og:updated_time" content="2017-08-21T11:25:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AndroidStudio中为项目生成JavaDoc文档的坑">
 <meta name="twitter:description" content="7月刚开始实习，第一周的时候，老大让我去写一份关于现有项目在Android Studio下生成JavaDoc的注释模版，我觉得应该挺简单的啊，结果实践中发现Android Studio在对注释模版的支持特别差劲，有好多小的坑，这里做个记录。  🎃让我们从头说起吧～ 我们知道Java中有三种注释语句 //用于单行注释/*…*/用于多行注释，从/开始，到/结束，不能嵌套/**…*/则是为支持jdk工">
@@ -379,7 +379,7 @@
 <p>头文件，方法，静态常量注释都按照Javadoc要求编写，我们最终可以使用AndroidStudio的Generate doc功能输出一份Javadoc的文档，方便所有开发人员使用学习。</p>
 <p>最后提及下方法内部注释，这些内容虽然不会录入Javadoc文档，为了美观还是建议有个规范</p>
 <p>单行注释按照<br>//注释内容</p>
-<p>多行注释按照<br>/<em>注释内容</em>/</p>
+<p>多行注释按照<br>/*注释内容*/</p>
 <p>这篇文章所使用的AS版本为2.3.3，仅供参考，欢迎大家指出其中所存在问题😁</p>
 
       

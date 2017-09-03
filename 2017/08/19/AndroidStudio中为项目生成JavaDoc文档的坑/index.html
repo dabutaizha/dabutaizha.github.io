@@ -105,7 +105,7 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1763639-e7c0b29041e54af2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1763639-74d788233a89fc51.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1763639-4bf9018cc0c679b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-09-03T08:24:53.000Z">
+<meta property="og:updated_time" content="2017-09-03T08:28:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AndroidStudio中为项目生成JavaDoc文档的坑">
 <meta name="twitter:description" content="7月刚开始实习，第一周的时候，老大让我去写一份关于现有项目在Android Studio下生成JavaDoc的注释模版，我觉得应该挺简单的啊，结果实践中发现Android Studio在对注释模版的支持特别差劲，有好多小的坑，这里做个记录。  🎃让我们从头说起吧～ 我们知道Java中有三种注释语句 //用于单行注释/*…*/用于多行注释，从/开始，到/结束，不能嵌套/**…*/则是为支持jdk工">
@@ -334,7 +334,7 @@
 <p>我们知道Java中有三种注释语句</p>
 <p><strong>//</strong><br>用于单行注释<br><strong>/*…*/</strong><br>用于多行注释，从/<em>开始，到</em>/结束，不能嵌套<br><strong>/**…*/</strong><br>则是为支持jdk工具javadoc.exe而特有的注释语句，而这种注释是我们这里最为关注的一种，因为javadoc 工具能从java源文件中读取第三种注释，并能识别注释中用@标识的一些特殊变量，制作成Html格式的类说明文档。</p>
 <p>javadoc不但能对一个 java源文件生成注释文档，而且能对目录和包生成交叉链接的html格式的类说明文档，类似于我们经常查阅的JavaAPI文档，AndroidAPI文档一样，我们的项目也需要这样一份文档来方便开发人员查阅使用，而这些的前提便是我们的注释需要按照一定格式来编写。</p>
-<p>还有需要注意的是javadoc可以将java文件中的文档注释生成为html文件并显示出来，那么既然这样我们如果在注释中使用html的标签会不会生效的，答案是肯定的，&amp; lt;pr/&gt;换行符 &amp; lt;b&gt;&amp; lt;/b&gt;段落 &amp; lt;li&gt;列表等都是很常用的标签，但是这些是需要我们自己视情况添加的，运用得当的话生成的文档自然更加美观，可读性更高。(还有代码逼格+30%的增幅效果)</p>
+<p>还有需要注意的是javadoc可以将java文件中的文档注释生成为html文件并显示出来，那么既然这样我们如果在注释中使用html的标签会不会生效的，答案是肯定的，&lt;pr/&gt;换行符 &lt;b&gt;&lt;/b&gt;段落 &lt;li&gt;列表等都是很常用的标签，但是这些是需要我们自己视情况添加的，运用得当的话生成的文档自然更加美观，可读性更高。(还有代码逼格+30%的增幅效果)</p>
 <hr>
 <p>🎃下面我们回到主题，Javadoc这么好用，我们该按什么样的格式编写适合Javadoc的注释呢，AndroidStudio为我们准备了相关辅助功能（虽然暂时或许还不是很完善）</p>
 <p>🍃首先是类，接口这些文件的头文件(就是会出现在import下方，文件名上方的注释)，我们需要使用什么功能怎么编写呢</p>

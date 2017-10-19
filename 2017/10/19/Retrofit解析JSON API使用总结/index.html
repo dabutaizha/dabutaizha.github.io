@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="直到3个月之前我对Retrofit的认识还停留在”不明觉厉”的层面 实习期间,公司Android项正在将网络请求库从Volley更换至OkHttp + Retrofit同时了解到后台服务器接口返回的响应数据格式,是一种叫JSON API的JSON数据响应格式 于是便开始针对Retrofit解析JSON API进行探索学习文章是模拟从0开始学习Retrofit,最终到使用Retrofit解析JSON">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Retrofit解析JSON API使用总结">
+<meta property="og:url" content="http://yoursite.com/2017/10/19/Retrofit解析JSON API使用总结/index.html">
+<meta property="og:site_name" content="DBTZ’S LIFE">
+<meta property="og:description" content="直到3个月之前我对Retrofit的认识还停留在”不明觉厉”的层面 实习期间,公司Android项正在将网络请求库从Volley更换至OkHttp + Retrofit同时了解到后台服务器接口返回的响应数据格式,是一种叫JSON API的JSON数据响应格式 于是便开始针对Retrofit解析JSON API进行探索学习文章是模拟从0开始学习Retrofit,最终到使用Retrofit解析JSON">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-19T13:05:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Retrofit解析JSON API使用总结">
+<meta name="twitter:description" content="直到3个月之前我对Retrofit的认识还停留在”不明觉厉”的层面 实习期间,公司Android项正在将网络请求库从Volley更换至OkHttp + Retrofit同时了解到后台服务器接口返回的响应数据格式,是一种叫JSON API的JSON数据响应格式 于是便开始针对Retrofit解析JSON API进行探索学习文章是模拟从0开始学习Retrofit,最终到使用Retrofit解析JSON">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"always","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/10/19/Retrofit解析JSON API使用总结/"/>
+
+
+
+
+
+  <title>Retrofit解析JSON API使用总结 | DBTZ’S LIFE</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DBTZ’S LIFE</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/19/Retrofit解析JSON API使用总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dabutaizha">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DBTZ’S LIFE">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Retrofit解析JSON API使用总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T21:05:27+08:00">
+                2017-10-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>直到3个月之前我对Retrofit的认识还停留在”不明觉厉”的层面</p>
+<p>实习期间,公司Android项正在将网络请求库从Volley更换至OkHttp + Retrofit<br>同时了解到后台服务器接口返回的响应数据格式,是一种叫JSON API的JSON数据响应格式</p>
+<p>于是便开始针对Retrofit解析JSON API进行探索学习<br>文章是模拟从0开始学习Retrofit,最终到使用Retrofit解析JSON API的主线</p>
+<hr>
+<p>######A.首先回顾下从Volley替换至OkHttp + Retrofit的好处<br>我想先按罗列下我们比较熟悉的Android网络请求框架</p>
+<ul>
+<li>HttpUrlConnection<br>(JDK自带)</li>
+<li>HttpClient<br>(Apache的子项目,Android6.0之前SDK自带,6.0之后需要手动引入才能使用)</li>
+<li><strong><a href="https://github.com/square/okhttp" target="_blank" rel="external">okhttp</a></strong><br>(出自Android开源大佬Square,一个高效的Http请求框架,具有很强的扩展性)</li>
+<li><strong><a href="https://github.com/loopj/android-async-http" target="_blank" rel="external">android-async-http</a></strong><br>(底层封装HttpClient,目前已经停止更新)</li>
+<li><strong><a href="https://github.com/google/volley" target="_blank" rel="external">Volley</a></strong><br>(网络请求与图片加载于一身的框架,Volley网络请求底层封装的HttpUrlConnection,在2.3以下使用的是HttpClient,也可以手写代码使其支持OkHttp,大文件传输存在硬伤,目前已经停止更新)</li>
+<li><strong><a href="https://github.com/square/retrofit" target="_blank" rel="external">retrofit</a></strong><br>(出自Android开源大佬Square,类似上面二位对网络请求进行二次封装,不过<strong>相比解耦更彻底具有更强的扩展性</strong>)</li>
+</ul>
+<p>Volley在大文件传输方面存在硬伤,并且目前已经停止更新了,官方当初发布Volley时的定位便是<strong>小而密集的请求</strong>这就注定他不能胜任所有网络请求场景</p>
+<hr>
+<p>回头看Retrofit,Android网络请求目前最火的框架就是OkHttp + Retrofit了</p>
+<p>二者出自同一家公司,Retrofit底层默认使用OkHttp,画风首先就很和谐<br>OkHttp专注于网络请求数据传输(效率高,功能全面,扩展性强)<br>Retrofit专注于简化网络请求使整个过程更加优雅便捷(轻松配置url参数,请求适配器;实现反序列化,异步回调等等)</p>
+<p>Retrofit作为Square公司Android开源全家桶的重要成员,Square为Retrofit准备了Converter-Gson、Adapter-Rxjava等众多可玩性极高的周边,使其越发强大</p>
+<p>二者组合发起网络请求最直观的感受就是方便,减少了代码量<br>其次就是逻辑清晰,便于阅读</p>
+<p>特别是公司项目后台遵循RESTful的情况下,如虎添翼(文末注释①)</p>
+<p>######B.尝试简单配置Retrofit并发送一个请求<br>先简单模拟下使用OkHttp + Retrofit 发送请求的一个流程</p>
+<ul>
+<li><p>引入OkHttp与Retrofit都很简单(看需求添加converters,adapter,mock等相周边关依赖)</p>
+<pre><code>compile &apos;com.squareup.okhttp3:okhttp:3.X.X&apos;
+compile &apos;com.squareup.retrofit2:retrofit:2.X.X&apos;
+</code></pre></li>
+<li><p>既然Retrofit是封装OkHttp的请求所以我们肯定得先配置OkHttp</p>
+<pre><code>OkHttpClient.Builder builder = new OkHttpClient.Builder();
+// 设置超时时间
+builder.connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
+builder.readTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
+builder.writeTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
+// 添加缓存
+builder.cache(new Cache(cacheFile, CACHE_SIZE));
+//添加网络拦截器；
+builder.addNetworkInterceptor(REWRITE_CACHE_CONTROL_INTERCEPTOR)
+        .addInterceptor(REWRITE_CACHE_CONTROL_INTERCEPTOR);
+//添加token过期监听
+builder.authenticator(mAuthenticator);
+builder.retryOnConnectionFailure(true);
+builder = StethoUtils.configureInterceptor(builder);
+mOkHttpClient = builder.build();
+</code></pre></li>
+<li><p>然后把我们构造好的OkHttpClient组装给Retrofit</p>
+<pre><code>Retrofit mRetrofit = new Retrofit.Builder()
+        .client(mOkHttpClient) // 添加OkHttp客户端
+        .baseUrl(Constant.BASE_URL)
+        .addConverterFactory(converterFactory) // 设置解析器
+        .build();
+</code></pre></li>
+<li><p>我们这里先简单示意一个<strong>请求接口类</strong>(只包含一个GET请求:获取某一页的emoji表情包)</p>
+<pre><code>public interface RESTfulAPI {
+        @GET(&quot;emoji&quot;)
+        Call&lt;List&lt;EmojiBean&gt;&gt; getEmoji(@Query(&quot;page&quot;) int page);
+}
+</code></pre></li>
+<li><p>最后用我们编写好的<strong>请求接口类</strong>完成Retrofit的构造</p>
+<pre><code>Retrofit instance = mRetrofit.create(RESTfulAPI.class);
+</code></pre></li>
+</ul>
+<ul>
+<li><p>最终我们发送请求的方式便是这样</p>
+<pre><code>Call&lt;List&lt;EmojiBean&gt;&gt; emojiCall = instance.getEmoji(page);
+emojiCall.enqueue(new retrofit2.Callback&lt;List&lt;EmojiBean&gt;&gt;() {
+        @Override 
+        public void onResponse(Call&lt;List&lt;EmojiBean&gt;&gt; call , Response&lt;List&lt;EmojiBean&gt;&gt; response) {
+            //TODO
+        }
+
+        @Override 
+        public void onFailure(Call&lt;List&lt;EmojiBean&gt;&gt; call , Throwable t) {
+            //TODO
+        }
+});
+</code></pre></li>
+</ul>
+<p>至此,我们使用Retrofit通过OkHttp完成了一次请求</p>
+<p>######C.先暂停下Retrofit,然后我们来关注下JSON API是什么</p>
+<ul>
+<li><p>何为JSON API格式<br>Redtful API的设计中,数据的响应格式有很多种<br>比如<br>我们常见的API接口的返回格式 <em>JSON + ret-data-msg</em><br>类似这样</p>
+<pre><code>{
+    &quot;ret&quot;: 200,
+    &quot;data&quot;: {
+    &quot;title&quot;: &quot;Default Api&quot;,
+    &quot;content&quot;: &quot;PHPer您好，欢迎使用PhalApi！&quot;,
+    &quot;version&quot;: &quot;1.1.0&quot;,
+    &quot;time&quot;: 1423142802
+    },
+    &quot;msg&quot;: &quot;&quot;
+}
+</code></pre><p> 其中ret表示请求返回的状态码,data表示业务数据,msg为错误信息<br>这种Restful API应该是最常见的</p>
+<p><strong>但是这并不是一种严格定制的设计规范,更多是一种约定俗成</strong></p>
+<ul>
+<li><p>在《RESTful Web APIs》一书中提及到,标准可以划归到4个分类,分别是：fiat标准、个人标准、公司标准以及开放标准; 而JSON + ret-data-msg 返回格式既不是个人标准,也不是公司标准,更不属于开放标准,只能算fiat标准<br>—-<a href="https://www.phalapi.net/wikis/1-14.html" target="_blank" rel="external">统一的返回格式和结构：ret data msg</a></p>
+</li>
+<li><p>从根本上说，好的 RESTful Api 应该：<br>1.公开资源<br>2.通过 HTTP，使用 HTTP 动词来操纵他们<br>3.和提供了规范指向自己，以及链接到其他的相关资源<br>—- <a href="http://phlyrestfully.readthedocs.io/en/latest/index.html" target="_blank" rel="external"> PhlyRestfully - ZF2 module for creating RESTful JSON APIs</a></p>
+</li>
+</ul>
+<p>显然我们常见的JSON + ret-data-msg这种返回响应格式并不是RESTful API的最好的响应格式</p>
+<p>除此之外我们还有一些具有严格开放标准的RESTful API的返回响应格式<br>比如 <strong>HAL + JSON</strong> , <strong>JSON API</strong>等</p>
+<p>我们这里所使用的JSON API规范,诞生与2013于2015年推出的1.0版本,模拟一个简单的例子</p>
+<pre><code>{
+  &quot;data&quot;: {
+  &quot;type&quot;: &quot;articles&quot;,
+  &quot;id&quot;: &quot;1&quot;,
+  &quot;attributes&quot;: {
+      //文章资源的各种属性
+  },
+  &quot;relationships&quot;: {
+      //该文章与其他资源的关系
+  }
+  &quot;include&quot;: {
+      //其他资源
+  }
+  }
+}
+</code></pre><p>优点与特性,可以看官网(<a href="http://jsonapi.org/" target="_blank" rel="external">JSON API</a>)(JSON API设计用来最小化请求的数量，以及客户端与服务器间传输的数据量。在高效实现的同时，无需牺牲可读性、灵活性和可发现性)</p>
+<p>OK,到此我们可以这么理解,JSON API是一种规范高效的数据响应格式</p>
+<p>######D.回到Retrofit,我们如何利用Retrofit解析JSON API格式的数据呢<br>官网上面其实已经推荐了很多JSON API的解析框架<br>在Java环境下有<br><a href="https://github.com/jasminb/jsonapi-converter" target="_blank" rel="external">jsonapi-converter</a><br><a href="http://www.crnk.io/" target="_blank" rel="external">crnk.io</a><br>在Android环境下有<br><a href="https://github.com/faogustavo/JSONApi" target="_blank" rel="external">faogustavo/JSONApi</a><br><a href="https://github.com/kamikat/moshi-jsonapi" target="_blank" rel="external">moshi-jsonapi</a><br><a href="https://github.com/xamoom/Morpheus" target="_blank" rel="external">Morpheus</a><br>然而可以轻松集成进Retrofit的只有jsonapi-converter以及moshi-jsonapi</p>
+</li>
+</ul>
+<p>因为项目中使用的是jsonapi-converter,我们这里也使用他来下手吧</p>
+<p>我们的目的是要将JSON API格式的数据转换为可用的POJO数据模型,所以我们首先应该根据JSON API来构造我们的POJO</p>
+<p>模拟有这样一段JSON API格式的数据需要解析</p>
+<pre><code>  {
+    &quot;data&quot;: {
+    &quot;type&quot;: &quot;articles&quot;,
+    &quot;id&quot;: &quot;id&quot;,
+    &quot;attributes&quot;: {
+    &quot;title&quot;: &quot;title&quot;
+    },
+    &quot;relationships&quot;: {
+      &quot;author&quot;: {
+        &quot;data&quot;: {
+          &quot;type&quot;: &quot;people&quot;,
+          &quot;id&quot;: &quot;id&quot;
+         }
+      }
+    }
+  },
+  &quot;included&quot;: [
+  {
+    &quot;type&quot;: &quot;people&quot;,
+    &quot;id&quot;: &quot;id&quot;,
+    &quot;attributes&quot;: {
+      &quot;firstName&quot;: &quot;John&quot;
+    }
+  }
+  ]
+}
+</code></pre><p>我们需要编写的POJO便是如下</p>
+<pre><code>@Type(&quot;articles&quot;)
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class ArticlesBean {
+    @Id
+    private int id;
+    private String title;
+    @Relationship(&quot;people&quot;)
+    List&lt;People&gt; people;
+
+    //getter and setter
+}
+
+----
+@Type(&quot;people&quot;)
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class PeopleBean{
+    @Id
+    private int id;
+    private String firstName;
+ }
+</code></pre><p>周所周知,Retrofit有着强大的扩展性,我们需要做的只有在构造Retrofit客户端时调用addConverterFactory方法传入JSONAPI解析器即可</p>
+<pre><code>ObjectMapper objectMapper = new ObjectMapper();
+
+Retrofit retrofit = new Retrofit.Builder()
+.baseUrl(&quot;https://yourapi&quot;)
+//JSONAPIConverterFactory的构造参数包含一个对象映射器以及你需要解析的POJO类
+.addConverterFactory(new JSONAPIConverterFactory(objectMapper, ArticlesBean.class, PeopleBean.class))
+.build();
+
+Retrofit instance = retrofit.create(MyBooksService.class);
+</code></pre><p>最后在Retrofit的请求接口类里添上对于Articles的请求</p>
+<pre><code>@FormUrlEncoded
+@Headers(&quot;Accept:application/vnd.lumendingo.v1+json.&quot;)
+@GET(&quot;articles?include=people&quot;)
+Call&lt;JSONAPIDocument&lt;ArticlesBean&gt;&gt; getArticles();
+</code></pre><p>接下来只需照常发送请求,<a href="https://github.com/jasminb/jsonapi-converter" target="_blank" rel="external">jsonapi-converter</a>帮我们做了解析方面几乎或有工作,不只是我们需要的type实体,以及其meta,link, relationship,以及relationship的type实体,meta,link,所有include的数据只需遵循简单的规则编写下POJO类便可一步到位.(具体的规则当然是github主页去看啦)</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/WechatIMG1.png" alt="dabutaizha wechat" style="width: 200px; max-width: 100%;"/>
+    <div>My WeChat！</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/19/AndroidStudio中为项目生成JavaDoc文档的坑/" rel="next" title="AndroidStudio中为项目生成JavaDoc文档的坑">
+                <i class="fa fa-chevron-left"></i> AndroidStudio中为项目生成JavaDoc文档的坑
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_douban">豆瓣</a>
+
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMDI5OC82ODUz"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="dabutaizha" />
+          <p class="site-author-name" itemprop="name">dabutaizha</p>
+           
+              <p class="site-description motion-element" itemprop="description">一个脱离了高级趣味的人</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/dabutaizha" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/5380411187" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      微博
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">dabutaizha</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+    由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+  </div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">
+    主题 &mdash;
+    <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+      NexT.Mist
+    </a>
+  </div>
+
+
+        
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//tajs.qq.com/stats?sId=63458356";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

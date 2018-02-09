@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Android开发总结分享," />
 
 
 
@@ -95,21 +95,17 @@
 
 
 <meta name="description" content="7月刚开始实习，第一周的时候，老大让我去写一份关于现有项目在Android Studio下生成JavaDoc的注释模版，我觉得应该挺简单的啊，结果实践中发现Android Studio在对注释模版的支持特别差劲，有好多小的坑，这里做个记录。  🎃让我们从头说起吧～ 我们知道Java中有三种注释语句 //用于单行注释/*…*/用于多行注释，从/开始，到/结束，不能嵌套/**…*/则是为支持jdk工">
+<meta name="keywords" content="Android开发总结分享">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AndroidStudio中为项目生成JavaDoc文档的坑">
 <meta property="og:url" content="http://yoursite.com/2017/08/19/AndroidStudio中为项目生成JavaDoc文档的坑/index.html">
 <meta property="og:site_name" content="DBTZ’S LIFE">
 <meta property="og:description" content="7月刚开始实习，第一周的时候，老大让我去写一份关于现有项目在Android Studio下生成JavaDoc的注释模版，我觉得应该挺简单的啊，结果实践中发现Android Studio在对注释模版的支持特别差劲，有好多小的坑，这里做个记录。  🎃让我们从头说起吧～ 我们知道Java中有三种注释语句 //用于单行注释/*…*/用于多行注释，从/开始，到/结束，不能嵌套/**…*/则是为支持jdk工">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1763639-c3fec099e5edee65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1763639-e7c0b29041e54af2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1763639-74d788233a89fc51.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1763639-4bf9018cc0c679b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-09-03T08:28:30.000Z">
+<meta property="og:updated_time" content="2018-02-09T02:01:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AndroidStudio中为项目生成JavaDoc文档的坑">
 <meta name="twitter:description" content="7月刚开始实习，第一周的时候，老大让我去写一份关于现有项目在Android Studio下生成JavaDoc的注释模版，我觉得应该挺简单的啊，结果实践中发现Android Studio在对注释模版的支持特别差劲，有好多小的坑，这里做个记录。  🎃让我们从头说起吧～ 我们知道Java中有三种注释语句 //用于单行注释/*…*/用于多行注释，从/开始，到/结束，不能嵌套/**…*/则是为支持jdk工">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1763639-c3fec099e5edee65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -338,14 +334,12 @@
 <hr>
 <p>🎃下面我们回到主题，Javadoc这么好用，我们该按什么样的格式编写适合Javadoc的注释呢，AndroidStudio为我们准备了相关辅助功能（虽然暂时或许还不是很完善）</p>
 <p>🍃首先是类，接口这些文件的头文件(就是会出现在import下方，文件名上方的注释)，我们需要使用什么功能怎么编写呢</p>
-<p>IDE提供了一个File Header的设置功能，File - Setting - Editor - File and Code Templates - Include - File Header<br>(可参考下方截图)</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1763639-c3fec099e5edee65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="设置File Header"></p>
+<p>IDE提供了一个File Header的设置功能，File - Setting - Editor - File and Code Templates - Include - File Header</p>
 <p>窗体的右侧便是头文件模板的编写窗口，具体编写方法右下方也有解释，就不过多解释了</p>
 <p>设置成功后我们每次新建Java文件IDE便会自动帮我们补充适用于Javadoc的头文件注释，我们唯一需要做的便是补充Description条目即可</p>
 <p>这样我们便解决了新建Java文件，头文件生成的问题，但我们别忘了那些原有的原有的Java文件，他们并不会跟着自动生成头文件，那么该怎么处理呢</p>
 <p>🍃这时候我们便需要用到Live Tmplates功能，File - Setting - Editor - Live Tmplates</p>
-<p>(可参考下方截图)</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1763639-e7c0b29041e54af2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="在Live Tmplates中设置老文件适用的File Header"><br>窗体的右侧编辑区的加号可以增加模板组或单个模板，一般我们先增加一个模板组，然后在模板组里编写各种模板，包括我们这里需要的头文件模板</p>
+<p>窗体的右侧编辑区的加号可以增加模板组或单个模板，一般我们先增加一个模板组，然后在模板组里编写各种模板，包括我们这里需要的头文件模板</p>
 <p>解释下这个窗口的右下方的编辑区</p>
 <ul>
 <li>Abbreviation:即你为这模板的命名，这个命名会成为你调用它的指令(比如你编写了名为一个doc_header的头文件模板，当你想使用它的时候，只需在文件的类名或接口名上一行输入doc_header，IDE便会弹出添加注释模板选项)</li>
@@ -357,8 +351,6 @@
 <p>具体模板如下:<br>/<em>*
  </em>Copyright (C) $YEAR$ Unicorn, Inc.<br> <em>Description : 
  </em>Created by $USER$ on $DATE$ $TIME$.<br> */</p>
-<p>其中变量的函数设置如下</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1763639-74d788233a89fc51.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="变量的函数设置"></p>
 <p>这里有一点需要注意，我这个版本的AndroidStudio目前还没有year()函数，所以这里暂时用date()代替下，每次生成后需要手动删掉date()的多余部分。</p>
 <p>至此，AndroidStudio下适用用于Javadoc的头文件注释生成方法我们已经说完了，当然一个完整的Javadoc文档还有方法注释以及静态常态注释</p>
 <p>🍃接下来我们来关注方法以及静态常量的注释怎么生成</p>
@@ -366,7 +358,6 @@
 <p>但其实这些函数是不会生效的，因为AndroidStudio暂时不支持自定义方法使用模板函数，也就是说对自定义方法使用这些模板，变量会是是空，这样就没有什么意义了(这个设定太坑了)</p>
 <p>那我们该怎么做？天无绝人之路AndroidStudio中还藏有一个名叫Fix doc comment的方法</p>
 <p>我们可以在Setting中直接搜索fix doc comment，我们需要做的就是双击给这个功能设置一个快捷键，这样我们就可以使它为我们的方法生成注释了</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1763639-4bf9018cc0c679b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="设置fix doc comment功能的快捷键"></p>
 <p>比如我们设置成Alt+反斜杠后，我们只需要将鼠标放在我们的自定义方法名上使用组合键即可</p>
 <p>最终效果示例如下:<br>/<em>*
  </em>@param position 位置position<br> <em>@param url 链接url
@@ -403,6 +394,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android开发总结分享/" rel="tag"># Android开发总结分享</a>
+          
+        </div>
       
 
       
@@ -513,7 +510,7 @@ var jiathis_config={
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -521,6 +518,15 @@ var jiathis_config={
 
           
 
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
           
 
         </nav>

@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="DBTZ’S LIFE">
 <meta property="og:description" content="直到3个月之前我对Retrofit的认识还停留在”不明觉厉”的层面 实习期间,公司Android项正在将网络请求库从Volley更换至OkHttp + Retrofit同时了解到后台服务器接口返回的响应数据格式,是一种叫JSON API的JSON数据响应格式 于是便开始针对Retrofit解析JSON API进行探索学习文章是模拟从0开始学习Retrofit,最终到使用Retrofit解析JSON">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-09T01:52:13.000Z">
+<meta property="og:updated_time" content="2018-04-27T08:33:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Retrofit解析JSON API使用总结">
 <meta name="twitter:description" content="直到3个月之前我对Retrofit的认识还停留在”不明觉厉”的层面 实习期间,公司Android项正在将网络请求库从Volley更换至OkHttp + Retrofit同时了解到后台服务器接口返回的响应数据格式,是一种叫JSON API的JSON数据响应格式 于是便开始针对Retrofit解析JSON API进行探索学习文章是模拟从0开始学习Retrofit,最终到使用Retrofit解析JSON">
@@ -343,7 +343,6 @@
 <p>二者出自同一家公司,Retrofit底层默认使用OkHttp,画风首先就很和谐<br>OkHttp专注于网络请求数据传输(效率高,功能全面,扩展性强)<br>Retrofit专注于简化网络请求使整个过程更加优雅便捷(轻松配置url参数,请求适配器;实现反序列化,异步回调等等)</p>
 <p>Retrofit作为Square公司Android开源全家桶的重要成员,Square为Retrofit准备了Converter-Gson、Adapter-Rxjava等众多可玩性极高的周边,使其越发强大</p>
 <p>二者组合发起网络请求最直观的感受就是方便,减少了代码量<br>其次就是逻辑清晰,便于阅读</p>
-<p>特别是公司项目后台遵循RESTful的情况下,如虎添翼(文末注释①)</p>
 <p>######B.尝试简单配置Retrofit并发送一个请求<br>先简单模拟下使用OkHttp + Retrofit 发送请求的一个流程</p>
 <ul>
 <li><p>引入OkHttp与Retrofit都很简单(看需求添加converters,adapter,mock等相周边关依赖)</p>

@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="DBTZ’S LIFE">
 <meta property="og:description" content="直到3个月之前我对Retrofit的认识还停留在”不明觉厉”的层面 实习期间,公司Android项正在将网络请求库从Volley更换至OkHttp + Retrofit同时了解到后台服务器接口返回的响应数据格式,是一种叫JSON API的JSON数据响应格式 于是便开始针对Retrofit解析JSON API进行探索学习文章是模拟从0开始学习Retrofit,最终到使用Retrofit解析JSON">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-13T01:06:48.000Z">
+<meta property="og:updated_time" content="2018-07-13T01:17:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Retrofit解析JSON API使用总结">
 <meta name="twitter:description" content="直到3个月之前我对Retrofit的认识还停留在”不明觉厉”的层面 实习期间,公司Android项正在将网络请求库从Volley更换至OkHttp + Retrofit同时了解到后台服务器接口返回的响应数据格式,是一种叫JSON API的JSON数据响应格式 于是便开始针对Retrofit解析JSON API进行探索学习文章是模拟从0开始学习Retrofit,最终到使用Retrofit解析JSON">
@@ -328,7 +328,7 @@
 <p>实习期间,公司Android项正在将网络请求库从Volley更换至OkHttp + Retrofit<br>同时了解到后台服务器接口返回的响应数据格式,是一种叫JSON API的JSON数据响应格式</p>
 <p>于是便开始针对Retrofit解析JSON API进行探索学习<br>文章是模拟从0开始学习Retrofit,最终到使用Retrofit解析JSON API的主线</p>
 <hr>
-<h6 id="首先回顾下从Volley替换至OkHttp-Retrofit的好处"><a href="#首先回顾下从Volley替换至OkHttp-Retrofit的好处" class="headerlink" title="首先回顾下从Volley替换至OkHttp + Retrofit的好处"></a>首先回顾下从Volley替换至OkHttp + Retrofit的好处</h6><p>我想先按罗列下我们比较熟悉的Android网络请求框架</p>
+<h6 id="OkHttp-Retrofit的好处"><a href="#OkHttp-Retrofit的好处" class="headerlink" title="OkHttp + Retrofit的好处"></a>OkHttp + Retrofit的好处</h6><p>我想先按罗列下我们比较熟悉的Android网络请求框架</p>
 <ul>
 <li>HttpUrlConnection<br>(JDK自带)</li>
 <li>HttpClient<br>(Apache的子项目,Android6.0之前SDK自带,6.0之后需要手动引入才能使用)</li>
@@ -343,7 +343,7 @@
 <p>二者出自同一家公司,Retrofit底层默认使用OkHttp,画风首先就很和谐<br>OkHttp专注于网络请求数据传输(效率高,功能全面,扩展性强)<br>Retrofit专注于简化网络请求使整个过程更加优雅便捷(轻松配置url参数,请求适配器;实现反序列化,异步回调等等)</p>
 <p>Retrofit作为Square公司Android开源全家桶的重要成员,Square为Retrofit准备了Converter-Gson、Adapter-Rxjava等众多可玩性极高的周边,使其越发强大</p>
 <p>二者组合发起网络请求最直观的感受就是方便,减少了代码量<br>其次就是逻辑清晰,便于阅读</p>
-<h6 id="尝试简单配置Retrofit并发送一个请求"><a href="#尝试简单配置Retrofit并发送一个请求" class="headerlink" title="尝试简单配置Retrofit并发送一个请求"></a>尝试简单配置Retrofit并发送一个请求</h6><p>先简单模拟下使用OkHttp + Retrofit 发送请求的一个流程</p>
+<h6 id="简单配置使用Retrofit发送请求"><a href="#简单配置使用Retrofit发送请求" class="headerlink" title="简单配置使用Retrofit发送请求"></a>简单配置使用Retrofit发送请求</h6><p>先简单模拟下使用OkHttp + Retrofit 发送请求的一个流程</p>
 <ul>
 <li><p>引入OkHttp与Retrofit都很简单(看需求添加converters,adapter,mock等相周边关依赖)</p>
 <pre><code>compile &apos;com.squareup.okhttp3:okhttp:3.X.X&apos;
@@ -400,7 +400,7 @@ emojiCall.enqueue(new retrofit2.Callback&lt;List&lt;EmojiBean&gt;&gt;() {
 </code></pre></li>
 </ul>
 <p>至此,我们使用Retrofit通过OkHttp完成了一次请求</p>
-<h6 id="先暂停下Retrofit-然后我们来关注下JSON-API是什么"><a href="#先暂停下Retrofit-然后我们来关注下JSON-API是什么" class="headerlink" title="先暂停下Retrofit,然后我们来关注下JSON API是什么"></a>先暂停下Retrofit,然后我们来关注下JSON API是什么</h6><ul>
+<h6 id="JSON-API是什么"><a href="#JSON-API是什么" class="headerlink" title="JSON API是什么"></a>JSON API是什么</h6><ul>
 <li><p>何为JSON API格式<br>Redtful API的设计中,数据的响应格式有很多种<br>比如<br>我们常见的API接口的返回格式 <em>JSON + ret-data-msg</em><br>类似这样</p>
 <pre><code>{
     &quot;ret&quot;: 200,
@@ -440,9 +440,9 @@ emojiCall.enqueue(new retrofit2.Callback&lt;List&lt;EmojiBean&gt;&gt;() {
 }
 </code></pre><p>优点与特性,可以看官网(<a href="http://jsonapi.org/" target="_blank" rel="external">JSON API</a>)(JSON API设计用来最小化请求的数量，以及客户端与服务器间传输的数据量。在高效实现的同时，无需牺牲可读性、灵活性和可发现性)</p>
 <p>OK,到此我们可以这么理解,JSON API是一种规范高效的数据响应格式</p>
-<p>######D.回到Retrofit,我们如何利用Retrofit解析JSON API格式的数据呢<br>官网上面其实已经推荐了很多JSON API的解析框架<br>在Java环境下有<br><a href="https://github.com/jasminb/jsonapi-converter" target="_blank" rel="external">jsonapi-converter</a><br><a href="http://www.crnk.io/" target="_blank" rel="external">crnk.io</a><br>在Android环境下有<br><a href="https://github.com/faogustavo/JSONApi" target="_blank" rel="external">faogustavo/JSONApi</a><br><a href="https://github.com/kamikat/moshi-jsonapi" target="_blank" rel="external">moshi-jsonapi</a><br><a href="https://github.com/xamoom/Morpheus" target="_blank" rel="external">Morpheus</a><br>然而可以轻松集成进Retrofit的只有jsonapi-converter以及moshi-jsonapi</p>
 </li>
 </ul>
+<h6 id="如何利用Retrofit解析JSON-API"><a href="#如何利用Retrofit解析JSON-API" class="headerlink" title="如何利用Retrofit解析JSON API"></a>如何利用Retrofit解析JSON API</h6><p>官网上面其实已经推荐了很多JSON API的解析框架<br>在Java环境下有<br><a href="https://github.com/jasminb/jsonapi-converter" target="_blank" rel="external">jsonapi-converter</a><br><a href="http://www.crnk.io/" target="_blank" rel="external">crnk.io</a><br>在Android环境下有<br><a href="https://github.com/faogustavo/JSONApi" target="_blank" rel="external">faogustavo/JSONApi</a><br><a href="https://github.com/kamikat/moshi-jsonapi" target="_blank" rel="external">moshi-jsonapi</a><br><a href="https://github.com/xamoom/Morpheus" target="_blank" rel="external">Morpheus</a><br>然而可以轻松集成进Retrofit的只有jsonapi-converter以及moshi-jsonapi</p>
 <p>因为项目中使用的是jsonapi-converter,我们这里也使用他来下手吧</p>
 <p>我们的目的是要将JSON API格式的数据转换为可用的POJO数据模型,所以我们首先应该根据JSON API来构造我们的POJO</p>
 <p>模拟有这样一段JSON API格式的数据需要解析</p>
@@ -732,7 +732,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#首先回顾下从Volley替换至OkHttp-Retrofit的好处"><span class="nav-number">1.</span> <span class="nav-text">首先回顾下从Volley替换至OkHttp + Retrofit的好处</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#尝试简单配置Retrofit并发送一个请求"><span class="nav-number">2.</span> <span class="nav-text">尝试简单配置Retrofit并发送一个请求</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#先暂停下Retrofit-然后我们来关注下JSON-API是什么"><span class="nav-number">3.</span> <span class="nav-text">先暂停下Retrofit,然后我们来关注下JSON API是什么</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#OkHttp-Retrofit的好处"><span class="nav-number">1.</span> <span class="nav-text">OkHttp + Retrofit的好处</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#简单配置使用Retrofit发送请求"><span class="nav-number">2.</span> <span class="nav-text">简单配置使用Retrofit发送请求</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#JSON-API是什么"><span class="nav-number">3.</span> <span class="nav-text">JSON API是什么</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#如何利用Retrofit解析JSON-API"><span class="nav-number">4.</span> <span class="nav-text">如何利用Retrofit解析JSON API</span></a></li></ol></div>
             
 
           </div>

@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="DBTZ’S LIFE">
 <meta property="og:description" content="直到3个月之前我对Retrofit的认识还停留在”不明觉厉”的层面 实习期间,公司Android项正在将网络请求库从Volley更换至OkHttp + Retrofit同时了解到后台服务器接口返回的响应数据格式,是一种叫JSON API的JSON数据响应格式 于是便开始针对Retrofit解析JSON API进行探索学习文章是模拟从0开始学习Retrofit,最终到使用Retrofit解析JSON">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-27T08:33:59.000Z">
+<meta property="og:updated_time" content="2018-07-13T01:02:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Retrofit解析JSON API使用总结">
 <meta name="twitter:description" content="直到3个月之前我对Retrofit的认识还停留在”不明觉厉”的层面 实习期间,公司Android项正在将网络请求库从Volley更换至OkHttp + Retrofit同时了解到后台服务器接口返回的响应数据格式,是一种叫JSON API的JSON数据响应格式 于是便开始针对Retrofit解析JSON API进行探索学习文章是模拟从0开始学习Retrofit,最终到使用Retrofit解析JSON">
@@ -328,7 +328,7 @@
 <p>实习期间,公司Android项正在将网络请求库从Volley更换至OkHttp + Retrofit<br>同时了解到后台服务器接口返回的响应数据格式,是一种叫JSON API的JSON数据响应格式</p>
 <p>于是便开始针对Retrofit解析JSON API进行探索学习<br>文章是模拟从0开始学习Retrofit,最终到使用Retrofit解析JSON API的主线</p>
 <hr>
-<p>######A.首先回顾下从Volley替换至OkHttp + Retrofit的好处<br>我想先按罗列下我们比较熟悉的Android网络请求框架</p>
+<h6 id="A-首先回顾下从Volley替换至OkHttp-Retrofit的好处"><a href="#A-首先回顾下从Volley替换至OkHttp-Retrofit的好处" class="headerlink" title="A.首先回顾下从Volley替换至OkHttp + Retrofit的好处"></a>A.首先回顾下从Volley替换至OkHttp + Retrofit的好处</h6><p>我想先按罗列下我们比较熟悉的Android网络请求框架</p>
 <ul>
 <li>HttpUrlConnection<br>(JDK自带)</li>
 <li>HttpClient<br>(Apache的子项目,Android6.0之前SDK自带,6.0之后需要手动引入才能使用)</li>
@@ -343,7 +343,7 @@
 <p>二者出自同一家公司,Retrofit底层默认使用OkHttp,画风首先就很和谐<br>OkHttp专注于网络请求数据传输(效率高,功能全面,扩展性强)<br>Retrofit专注于简化网络请求使整个过程更加优雅便捷(轻松配置url参数,请求适配器;实现反序列化,异步回调等等)</p>
 <p>Retrofit作为Square公司Android开源全家桶的重要成员,Square为Retrofit准备了Converter-Gson、Adapter-Rxjava等众多可玩性极高的周边,使其越发强大</p>
 <p>二者组合发起网络请求最直观的感受就是方便,减少了代码量<br>其次就是逻辑清晰,便于阅读</p>
-<p>######B.尝试简单配置Retrofit并发送一个请求<br>先简单模拟下使用OkHttp + Retrofit 发送请求的一个流程</p>
+<h6 id="B-尝试简单配置Retrofit并发送一个请求"><a href="#B-尝试简单配置Retrofit并发送一个请求" class="headerlink" title="B.尝试简单配置Retrofit并发送一个请求"></a>B.尝试简单配置Retrofit并发送一个请求</h6><p>先简单模拟下使用OkHttp + Retrofit 发送请求的一个流程</p>
 <ul>
 <li><p>引入OkHttp与Retrofit都很简单(看需求添加converters,adapter,mock等相周边关依赖)</p>
 <pre><code>compile &apos;com.squareup.okhttp3:okhttp:3.X.X&apos;
@@ -400,8 +400,7 @@ emojiCall.enqueue(new retrofit2.Callback&lt;List&lt;EmojiBean&gt;&gt;() {
 </code></pre></li>
 </ul>
 <p>至此,我们使用Retrofit通过OkHttp完成了一次请求</p>
-<p>######C.先暂停下Retrofit,然后我们来关注下JSON API是什么</p>
-<ul>
+<h6 id="C-先暂停下Retrofit-然后我们来关注下JSON-API是什么"><a href="#C-先暂停下Retrofit-然后我们来关注下JSON-API是什么" class="headerlink" title="C.先暂停下Retrofit,然后我们来关注下JSON API是什么"></a>C.先暂停下Retrofit,然后我们来关注下JSON API是什么</h6><ul>
 <li><p>何为JSON API格式<br>Redtful API的设计中,数据的响应格式有很多种<br>比如<br>我们常见的API接口的返回格式 <em>JSON + ret-data-msg</em><br>类似这样</p>
 <pre><code>{
     &quot;ret&quot;: 200,
@@ -636,8 +635,17 @@ var jiathis_config={
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -714,6 +722,22 @@ var jiathis_config={
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#A-首先回顾下从Volley替换至OkHttp-Retrofit的好处"><span class="nav-number">1.</span> <span class="nav-text">A.首先回顾下从Volley替换至OkHttp + Retrofit的好处</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#B-尝试简单配置Retrofit并发送一个请求"><span class="nav-number">2.</span> <span class="nav-text">B.尝试简单配置Retrofit并发送一个请求</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#C-先暂停下Retrofit-然后我们来关注下JSON-API是什么"><span class="nav-number">3.</span> <span class="nav-text">C.先暂停下Retrofit,然后我们来关注下JSON API是什么</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

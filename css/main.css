@@ -1808,7 +1808,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #d48cff;
+  background: #6362b9;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2888,4 +2888,16 @@ hr {
     width: auto;
     text-align: center;
   }
+}
+body {
+  background: url("http://p3z4bc5an.bkt.clouddn.com/courtnie-tosana-767498-unsplash.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+.content {
+  border-radius: 10px;
+  margin-top: 60px;
+  background: #fff;
 }

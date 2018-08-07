@@ -188,8 +188,8 @@ body {
   font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 14px;
   line-height: 2;
-  color: #555;
   background: #fff;
+  color: #676767;
 }
 @media (max-width: 767px) {
   body {
@@ -1095,7 +1095,7 @@ pre .javascript .function {
   position: relative;
   display: inline-block;
   padding: 0 40px;
-  color: #222;
+  color: #000;
   background: #222;
   border-bottom: none;
 }
@@ -1191,6 +1191,7 @@ pre .javascript .function {
   transition-duration: 0.2s;
   transition-timing-function: ease-in-out;
   transition-delay: 0s;
+  color: #000;
 }
 .menu .menu-item a:hover {
   border-bottom-color: #222;
@@ -1808,7 +1809,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #6362b9;
+  background: #60c1c2;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2890,7 +2891,7 @@ hr {
   }
 }
 body {
-  background: url("http://p3z4bc5an.bkt.clouddn.com/courtnie-tosana-767498-unsplash.jpg");
+  background: url("http://p3z4bc5an.bkt.clouddn.com/jonatan-pie-336812-unsplash.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -2898,6 +2899,29 @@ body {
 }
 .content {
   border-radius: 10px;
-  margin-top: 60px;
-  background: #fff;
+  padding-top: 40px;
+  padding-right: 40px;
+  padding-bottom: 40px;
+  padding-left: 40px;
+  background: rgba(255,255,255,0.7);
+}
+.header {
+  background: rgba(255,255,255,0);
+}
+.footer {
+  background: rgba(255,255,255,0);
+}
+.footer-inner {
+  color: #000;
+}
+#sidebar {
+  background: url("http://p3z4bc5an.bkt.clouddn.com/77c6a7efce1b9d16506c703ff1deb48f8d5464c1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+#sidebar p,
+#sidebar span,
+#sidebar a {
+  color: #fff;
 }

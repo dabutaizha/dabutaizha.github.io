@@ -19,7 +19,7 @@
 <meta property="og:site_name">
 <meta property="og:description" content="直到3个月之前我对Retrofit的认识还停留在”不明觉厉”的层面 实习期间,公司Android项正在将网络请求库从Volley更换至OkHttp + Retrofit同时了解到后台服务器接口返回的响应数据格式,是一种叫JSON API的JSON数据响应格式 于是便开始针对Retrofit解析JSON API进行探索学习文章是模拟从0开始学习Retrofit,最终到使用Retrofit解析JSON">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-07-13T01:17:00.000Z">
+<meta property="og:updated_time" content="2019-04-02T03:29:31.875Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Retrofit解析JSON API使用总结">
 <meta name="twitter:description" content="直到3个月之前我对Retrofit的认识还停留在”不明觉厉”的层面 实习期间,公司Android项正在将网络请求库从Volley更换至OkHttp + Retrofit同时了解到后台服务器接口返回的响应数据格式,是一种叫JSON API的JSON数据响应格式 于是便开始针对Retrofit解析JSON API进行探索学习文章是模拟从0开始学习Retrofit,最终到使用Retrofit解析JSON">
@@ -168,7 +168,7 @@
 <li><strong><a href="https://github.com/google/volley" target="_blank" rel="external">Volley</a></strong><br>(网络请求与图片加载于一身的框架,Volley网络请求底层封装的HttpUrlConnection,在2.3以下使用的是HttpClient,也可以手写代码使其支持OkHttp,大文件传输存在硬伤,目前已经停止更新)</li>
 <li><strong><a href="https://github.com/square/retrofit" target="_blank" rel="external">retrofit</a></strong><br>(出自Android开源大佬Square,类似上面二位对网络请求进行二次封装,不过<strong>相比解耦更彻底具有更强的扩展性</strong>)</li>
 </ul>
-<p>Volley在大文件传输方面存在硬伤,并且目前已经停止更新了,官方当初发布Volley时的定位便是<strong>小而密集的请求</strong>这就注定他不能胜任所有网络请求场景</p>
+<p>Volley在大文件传输方面存在硬伤,官方当初发布Volley时的定位便是<strong>小而密集的请求</strong>这就注定他不能胜任所有网络请求场景</p>
 <hr>
 <p>回头看Retrofit,Android网络请求目前最火的框架就是OkHttp + Retrofit了</p>
 <p>二者出自同一家公司,Retrofit底层默认使用OkHttp,画风首先就很和谐<br>OkHttp专注于网络请求数据传输(效率高,功能全面,扩展性强)<br>Retrofit专注于简化网络请求使整个过程更加优雅便捷(轻松配置url参数,请求适配器;实现反序列化,异步回调等等)</p>

@@ -3,26 +3,26 @@
 <head>
   <meta charset="utf-8">
   
-  <title>flutter开发环境配置记录 | </title>
+  <title>android7.0虚拟文件概念 | </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="Flutter" />
+  <meta name="keywords" content="Android开发总结分享" />
   
   
   
   
-  <meta name="description" content="首先向大家推荐Flutter中文网-开发环境配置 网站上面介绍的流程基本清晰，一步步下来不会有太大问题（毕竟每个人的电脑系统，网络环境，IDE版本等好多情况不尽相同，这里不能保证面面俱到） 这里简单记录下我搭建的流程 首先下载Flutter这里无论是在官网还是github均可 将Flutter相关工具加入环境变量123export PUB_HOSTED_URL=https://dart-pub.m">
-<meta name="keywords" content="Flutter">
+  <meta name="description" content="Android7.0虚拟文件概念问题在项目中有一个拍照裁剪然后上传的功能，然后我发现同样的一份代码在不同手机上表现的效果不同，主要体现在拍照后是否能根据事先准备的文件uri调起裁剪程序 发现经过更深入的观察我认为是Android版本的不同造成的差异，主要分割为7.0以上与7.0以下，从Android官网查了下发现的确Android7.0系统针对文件存储框架做出了变更，在Android7.0中修改了">
+<meta name="keywords" content="Android开发总结分享">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Flutter开发环境配置记录">
-<meta property="og:url" content="http://yoursite.com/2019/02/28/Flutter开发环境配置记录/index.html">
+<meta property="og:title" content="Android7.0虚拟文件概念">
+<meta property="og:url" content="http://yoursite.com/2019/04/18/Android7.0虚拟文件概念/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="首先向大家推荐Flutter中文网-开发环境配置 网站上面介绍的流程基本清晰，一步步下来不会有太大问题（毕竟每个人的电脑系统，网络环境，IDE版本等好多情况不尽相同，这里不能保证面面俱到） 这里简单记录下我搭建的流程 首先下载Flutter这里无论是在官网还是github均可 将Flutter相关工具加入环境变量123export PUB_HOSTED_URL=https://dart-pub.m">
+<meta property="og:description" content="Android7.0虚拟文件概念问题在项目中有一个拍照裁剪然后上传的功能，然后我发现同样的一份代码在不同手机上表现的效果不同，主要体现在拍照后是否能根据事先准备的文件uri调起裁剪程序 发现经过更深入的观察我认为是Android版本的不同造成的差异，主要分割为7.0以上与7.0以下，从Android官网查了下发现的确Android7.0系统针对文件存储框架做出了变更，在Android7.0中修改了">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-28T03:02:58.350Z">
+<meta property="og:updated_time" content="2019-04-18T10:38:57.032Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Flutter开发环境配置记录">
-<meta name="twitter:description" content="首先向大家推荐Flutter中文网-开发环境配置 网站上面介绍的流程基本清晰，一步步下来不会有太大问题（毕竟每个人的电脑系统，网络环境，IDE版本等好多情况不尽相同，这里不能保证面面俱到） 这里简单记录下我搭建的流程 首先下载Flutter这里无论是在官网还是github均可 将Flutter相关工具加入环境变量123export PUB_HOSTED_URL=https://dart-pub.m">
+<meta name="twitter:title" content="Android7.0虚拟文件概念">
+<meta name="twitter:description" content="Android7.0虚拟文件概念问题在项目中有一个拍照裁剪然后上传的功能，然后我发现同样的一份代码在不同手机上表现的效果不同，主要体现在拍照后是否能根据事先准备的文件uri调起裁剪程序 发现经过更深入的观察我认为是Android版本的不同造成的差异，主要分割为7.0以上与7.0以下，从Android官网查了下发现的确Android7.0系统针对文件存储框架做出了变更，在Android7.0中修改了">
   
     <link rel="alternate" href="/atom.xml" title="" type="application/atom+xml">
   
@@ -122,7 +122,7 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-Flutter开发环境配置记录" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+          <section id="main" style="float:none;"><article id="post-Android7.0虚拟文件概念" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
     
@@ -130,7 +130,7 @@
         
   
     <h1 class="thumb" class="article-title" itemprop="name">
-      Flutter开发环境配置记录
+      Android7.0虚拟文件概念
     </h1>
   
 
@@ -138,8 +138,8 @@
     
     <div class="article-meta">
       
-	<a href="/2019/02/28/Flutter开发环境配置记录/" class="article-date">
-	  <time datetime="2019-02-28T02:53:07.000Z" itemprop="datePublished">2019-02-28</time>
+	<a href="/2019/04/18/Android7.0虚拟文件概念/" class="article-date">
+	  <time datetime="2019-04-18T10:37:22.000Z" itemprop="datePublished">2019-04-18</time>
 	</a>
 
       
@@ -155,20 +155,20 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>首先向大家推荐<a href="https://flutterchina.club/setup-macos/" target="_blank" rel="external">Flutter中文网-开发环境配置</a></p>
-<p>网站上面介绍的流程基本清晰，一步步下来不会有太大问题（毕竟每个人的电脑系统，网络环境，IDE版本等好多情况不尽相同，这里不能保证面面俱到）</p>
-<p>这里简单记录下我搭建的流程</p>
-<h5 id="首先下载Flutter"><a href="#首先下载Flutter" class="headerlink" title="首先下载Flutter"></a>首先下载Flutter</h5><p>这里无论是在<a href="https://flutter.io/sdk-archive/#macos" target="_blank" rel="external">官网</a>还是<a href="https://github.com/flutter/flutter/releases" target="_blank" rel="external">github</a>均可</p>
-<h5 id="将Flutter相关工具加入环境变量"><a href="#将Flutter相关工具加入环境变量" class="headerlink" title="将Flutter相关工具加入环境变量"></a>将Flutter相关工具加入环境变量</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">export PUB_HOSTED_URL=https://dart-pub.mirrors.sjtug.sjtu.edu.cn/ </div><div class="line">export FLUTTER_STORAGE_BASE_URL=https://mirrors.sjtug.sjtu.edu.cn/</div><div class="line">export PATH=&quot;/Users/dabutaizha/Documents/flutter/bin:$PATH&quot;</div></pre></td></tr></table></figure>
-<p>由于一些flutter命令需要联网获取数据，所以PUB_HOSTED_URL与FLUTTER_STORAGE_BASE_URL是国内访问需要配置的镜像<a href="https://github.com/flutter/flutter/wiki/Using-Flutter-in-China" target="_blank" rel="external">详情查看</a></p>
-<h5 id="运行flutter-doctor命令"><a href="#运行flutter-doctor命令" class="headerlink" title="运行flutter doctor命令"></a>运行flutter doctor命令</h5><p>这里会自动帮你检查现有开发环境是否存在缺失，并给出解决建议，按照给出的解决方式进一步操作，安装或配置模块<br>（我这里的问题是没有初始化CocoaPods以及没有安装libimobiledevice和ideviceinstaller）</p>
-<p> 按提示操作即可最终再输入flutter doctor会显示如下内容</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Doctor summary (to see all details, run flutter doctor -v):</div><div class="line">[✓] Flutter (Channel stable, v1.0.0, on Mac OS X 10.14 18A391, locale</div><div class="line">    zh-Hans-CN)</div><div class="line">[✓] Android toolchain - develop for Android devices (Android SDK 28.0.3)</div><div class="line">[✓] iOS toolchain - develop for iOS devices (Xcode 10.1)</div><div class="line">[✓] Android Studio (version 3.3)</div><div class="line">[✓] Connected device (1 available)</div><div class="line"></div><div class="line">• No issues found!</div></pre></td></tr></table></figure>
-<p>大功告成，可以开始探索flutter了</p>
-<h5 id="参考内容"><a href="#参考内容" class="headerlink" title="参考内容"></a>参考内容</h5><ul>
-<li><a href="https://flutterchina.club/" target="_blank" rel="external">Flutter中文网</a></li>
-<li><a href="https://flutter.dev/" target="_blank" rel="external">Flutter官网</a></li>
-</ul>
+        <h1 id="Android7-0虚拟文件概念"><a href="#Android7-0虚拟文件概念" class="headerlink" title="Android7.0虚拟文件概念"></a>Android7.0虚拟文件概念</h1><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>在项目中有一个拍照裁剪然后上传的功能，然后我发现同样的一份代码在不同手机上表现的效果不同，主要体现在拍照后是否能根据事先准备的文件uri调起裁剪程序</p>
+<h3 id="发现"><a href="#发现" class="headerlink" title="发现"></a>发现</h3><p>经过更深入的观察我认为是Android版本的不同造成的差异，主要分割为7.0以上与7.0以下，从Android官网查了下发现的确Android7.0系统针对文件存储框架做出了变更，在Android7.0中修改了文件储存框架加入了<a href="https://developer.android.com/about/versions/nougat/android-7.0.html#virtual_files" target="_blank" rel="external">虚拟文件</a>的概念</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">虚拟文件功能可以让您的 DocumentsProvider 返回可与 ACTION_VIEW</div><div class="line">intent 使用的文件 URI，即使它们没有直接字节码表示。Android7.0</div><div class="line">还允许您为用户文件（虚拟或其他类）提供备用格式。</div><div class="line"></div><div class="line">为获得您的应用中的虚拟文件的 URI，首先您应创建一个 Intent以打开文件</div><div class="line">选择器 UI。由于应用不能使用 openInputStream() 方法来直接打开一个</div><div class="line">虚拟文件，因此如果您包括了 CATEGORY_OPENABLE 类别，您的应用不会收</div><div class="line">到任何虚拟文件。</div></pre></td></tr></table></figure>
+<h3 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h3><p>个人的理解下来这是一种对文件选择更加方便的优化</p>
+<blockquote>
+<p>小于7.0的情况下拍照后的传统uri传递文文件file:///storage/emulated/0/Photo1555582174536</p>
+</blockquote>
+<p>这种情况下我们必须手动构造uri来获取文件</p>
+<blockquote>
+<p>大于等于7.0可以直接通过虚拟uri来传递文件content://com.zhihu.matisse.sample.fileproviderA/camera_photos_a/storage/emulated/0/Photo1555582292730</p>
+</blockquote>
+<p>这样的话我们只需将第一次调起选择器UI之前传递的uri保存起来 后面可以直接加以利用</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>7.0之前和之后的文件获取逻辑有些许的改变 7.0以后可以更加方便进行uri的传递 但是需要进行适配</p>
+<p>参考 <a href="https://developer.android.com/about/versions/nougat/android-7.0.html#work_profile_security_challenge" target="_blank" rel="external">Android7.0更新内容</a></p>
 
       
     </div>
@@ -182,7 +182,7 @@
           </li>
           <li class="post-copyright-link">
           <strong>本文链接:  </strong>
-          <a href="/2019/02/28/Flutter开发环境配置记录/" target="_blank" title="Flutter开发环境配置记录">http://yoursite.com/2019/02/28/Flutter开发环境配置记录/</a>
+          <a href="/2019/04/18/Android7.0虚拟文件概念/" target="_blank" title="Android7.0虚拟文件概念">http://yoursite.com/2019/04/18/Android7.0虚拟文件概念/</a>
           </li>
           <li class="post-copyright-license">
             <strong>版权声明:   </strong>
@@ -228,19 +228,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/04/18/Android7.0虚拟文件概念/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">
-        
-          Android7.0虚拟文件概念
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/11/30/《教父Ⅰ》 —— 把意外看做是对一个人的侮辱/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/02/28/Flutter开发环境配置记录/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">《教父Ⅰ》 —— 把意外看做是对一个人的侮辱</div>
+      <div class="article-nav-title">Flutter开发环境配置记录</div>
     </a>
   
 </nav>
@@ -254,7 +245,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#首先下载Flutter"><span class="nav-number">1.</span> <span class="nav-text">首先下载Flutter</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#将Flutter相关工具加入环境变量"><span class="nav-number">2.</span> <span class="nav-text">将Flutter相关工具加入环境变量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#运行flutter-doctor命令"><span class="nav-number">3.</span> <span class="nav-text">运行flutter doctor命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#参考内容"><span class="nav-number">4.</span> <span class="nav-text">参考内容</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Android7-0虚拟文件概念"><span class="nav-number">1.</span> <span class="nav-text">Android7.0虚拟文件概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题"><span class="nav-number">1.0.1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发现"><span class="nav-number">1.0.2.</span> <span class="nav-text">发现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#理解"><span class="nav-number">1.0.3.</span> <span class="nav-text">理解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.0.4.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></li></ol>
     
     </div>
   </aside>

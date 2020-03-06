@@ -383,16 +383,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p class="article-excerpt-content">
-          目标效果第一次看到即刻的侧滑拖拽就很感兴趣 这种拖拽动画的感觉太舒服了
-即刻的动画效果
-
-对比下仿写的效果
-
-效果图压缩的有点厉害 先将就下吧
-仿写思路考虑到所有的界面都可以使用这种效果，我首先想到的是继承ViewGroup来实现，这里选择继承FrameLayout
-通过重写onInterceptTouchEvent(MotionEvent event)来判断是否拦截滑动事件
-重写onTouchEvent(MotionEvent event)来处理绘制流程
-由于ViewGroup为透明背景...
+          自定义View 高仿即刻客户端侧滑回退动画
+Gradle1234dependencies &#123;    ...    implementation &apos;com.github.dabutaizha:SlideDampingAnimationLayout:v1.0.2&apos;&#125;
+Usage12345678910111213&lt;slideDampongAnimationLayout.SlideDampingAnimationLayout    xmlns:andr...
         </p>
         <p class="article-more-link">
           <a href="/2018/08/29/高仿即刻侧滑阴影返回动画/#more">阅读全文</a>

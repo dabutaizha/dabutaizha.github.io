@@ -11,21 +11,21 @@
   
   
   
-  <meta name="description" content="目标效果第一次看到即刻的侧滑拖拽就很感兴趣 这种拖拽动画的感觉太舒服了 即刻的动画效果  对比下仿写的效果  效果图压缩的有点厉害 先将就下吧 仿写思路考虑到所有的界面都可以使用这种效果，我首先想到的是继承ViewGroup来实现，这里选择继承FrameLayout 通过重写onInterceptTouchEvent(MotionEvent event)来判断是否拦截滑动事件 重写onTouchE">
+  <meta name="description" content="自定义View 高仿即刻客户端侧滑回退动画 Gradle1234dependencies &amp;#123;    ...    implementation &amp;apos;com.github.dabutaizha:SlideDampingAnimationLayout:v1.0.2&amp;apos;&amp;#125; Usage12345678910111213&amp;lt;slideDampongAnimationL">
 <meta name="keywords" content="Android开发总结分享">
 <meta property="og:type" content="article">
 <meta property="og:title" content="高仿即刻侧滑阴影返回动画">
 <meta property="og:url" content="http://yoursite.com/2018/08/29/高仿即刻侧滑阴影返回动画/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="目标效果第一次看到即刻的侧滑拖拽就很感兴趣 这种拖拽动画的感觉太舒服了 即刻的动画效果  对比下仿写的效果  效果图压缩的有点厉害 先将就下吧 仿写思路考虑到所有的界面都可以使用这种效果，我首先想到的是继承ViewGroup来实现，这里选择继承FrameLayout 通过重写onInterceptTouchEvent(MotionEvent event)来判断是否拦截滑动事件 重写onTouchE">
+<meta property="og:description" content="自定义View 高仿即刻客户端侧滑回退动画 Gradle1234dependencies &amp;#123;    ...    implementation &amp;apos;com.github.dabutaizha:SlideDampingAnimationLayout:v1.0.2&amp;apos;&amp;#125; Usage12345678910111213&amp;lt;slideDampongAnimationL">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://camo.githubusercontent.com/95c1418e3e3fa0c4654d35f1eb93d012ae587c97/68747470733a2f2f73322e617831782e636f6d2f323031392f30362f32312f567a796762392e676966">
-<meta property="og:image" content="https://camo.githubusercontent.com/89e07d7ed3ea0f6621e18149ffa7facae89e5fea/68747470733a2f2f73322e617831782e636f6d2f323031392f30362f32312f567a793333382e676966">
-<meta property="og:updated_time" content="2020-03-06T07:53:26.846Z">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/21/Vzygb9.gif">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/21/Vzy338.gif">
+<meta property="og:updated_time" content="2020-03-06T08:00:27.137Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高仿即刻侧滑阴影返回动画">
-<meta name="twitter:description" content="目标效果第一次看到即刻的侧滑拖拽就很感兴趣 这种拖拽动画的感觉太舒服了 即刻的动画效果  对比下仿写的效果  效果图压缩的有点厉害 先将就下吧 仿写思路考虑到所有的界面都可以使用这种效果，我首先想到的是继承ViewGroup来实现，这里选择继承FrameLayout 通过重写onInterceptTouchEvent(MotionEvent event)来判断是否拦截滑动事件 重写onTouchE">
-<meta name="twitter:image" content="https://camo.githubusercontent.com/95c1418e3e3fa0c4654d35f1eb93d012ae587c97/68747470733a2f2f73322e617831782e636f6d2f323031392f30362f32312f567a796762392e676966">
+<meta name="twitter:description" content="自定义View 高仿即刻客户端侧滑回退动画 Gradle1234dependencies &amp;#123;    ...    implementation &amp;apos;com.github.dabutaizha:SlideDampingAnimationLayout:v1.0.2&amp;apos;&amp;#125; Usage12345678910111213&amp;lt;slideDampongAnimationL">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/06/21/Vzygb9.gif">
   
     <link rel="alternate" href="/atom.xml" title="" type="application/atom+xml">
   
@@ -158,44 +158,14 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="目标效果"><a href="#目标效果" class="headerlink" title="目标效果"></a>目标效果</h3><p>第一次看到即刻的侧滑拖拽就很感兴趣 这种拖拽动画的感觉太舒服了</p>
-<p>即刻的动画效果</p>
-<p><img src="https://camo.githubusercontent.com/95c1418e3e3fa0c4654d35f1eb93d012ae587c97/68747470733a2f2f73322e617831782e636f6d2f323031392f30362f32312f567a796762392e676966" width="300" hegiht="300" alt="“pic0”/"></p>
-<p>对比下仿写的效果</p>
-<p><img src="https://camo.githubusercontent.com/89e07d7ed3ea0f6621e18149ffa7facae89e5fea/68747470733a2f2f73322e617831782e636f6d2f323031392f30362f32312f567a793333382e676966" width="300" hegiht="300" alt="“pic2”/"></p>
-<p>效果图压缩的有点厉害 先将就下吧</p>
-<h3 id="仿写思路"><a href="#仿写思路" class="headerlink" title="仿写思路"></a>仿写思路</h3><p>考虑到所有的界面都可以使用这种效果，我首先想到的是继承ViewGroup来实现<br>，这里选择继承FrameLayout</p>
-<p>通过重写onInterceptTouchEvent(MotionEvent event)来判断是否拦截滑动事件</p>
-<p>重写onTouchEvent(MotionEvent event)来处理绘制流程</p>
-<p>由于ViewGroup为透明背景重写dispatchDraw(Canvas canvas)来完成初始化绘制</p>
-<h3 id="动画绘制思路"><a href="#动画绘制思路" class="headerlink" title="动画绘制思路"></a>动画绘制思路</h3><p>由于我的粗心没有仔细观察到原即刻的动画阴影内部横线的变化，仿写的最终效果其实是有略微差异的</p>
-<p>原即刻中横线从无到有变化再到变化至箭头的过程是随着阴影同步变化的一气呵成</p>
-<p>仿写中由于观察不细致导致横线变化至箭头的过程理解为了两步</p>
-<ul>
-<li>前半步是横线从无到有从小到大随着阴影同步变化</li>
-<li>后半步是当阴影增长到最大继续拖拽的话横线开始变化至箭头</li>
-</ul>
-<hr>
-<p>所以整个绘制流程以<strong>阴影是否拖拽至最大</strong>分为了两部分</p>
-<ul>
-<li>如果没有拖拽至最大，贝塞尔曲线的控制点继续变化即可</li>
-<li>如果已经拖拽至最大，贝塞尔曲线的控制点不再变化，直线开始变为折线</li>
-</ul>
-<h3 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h3><p>简单的扩展下实现一些可选配置项<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">slideDampongAnimationLayout.SlideDampingAnimationLayout</span></span></div><div class="line"><span class="tag">    <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line"><span class="tag">    <span class="attr">xmlns:app</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">"@+id/search_result_slide_layout"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></div><div class="line">    &lt;--配置阴影颜色--&gt;</div><div class="line">    app:bezier_curves_color="@color/black" </div><div class="line">    <span class="tag">&lt;<span class="name">--quadratic_bezier_curves二阶贝塞尔样式</span> <span class="attr">high_order_bezier_curves</span>类即刻样式<span class="attr">--</span>&gt;</span></div><div class="line">    app:bezier_curves_type="quadratic_bezier_curves" </div><div class="line">    <span class="tag">&lt;<span class="name">--only_left只触发左边</span> <span class="attr">only_right</span>只触发右边 <span class="attr">both</span>两边都可触发<span class="attr">--</span>&gt;</span></div><div class="line">    app:allow_gesture="only_left"&gt; </div><div class="line">  </div><div class="line">    <span class="tag">&lt;<span class="name">--content--</span>&gt;</span></div><div class="line">  </div><div class="line"><span class="tag">&lt;/<span class="name">slideDampongAnimationLayout.SlideDampingAnimationLayout</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>可配置左右事件的监听</p>
-<pre><code>mSlideAnimationLayout.setSlideListener(new SlideEventListener() {
-        @Override
-        public void leftEvent() {
-        }
-
-        @Override
-        public void rightEvent() {
-        }
-    });
-</code></pre><h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>Gradle引入</p>
-<pre><code>implementation &apos;com.github.dabutaizha:SlideDampingAnimationLayout:v1.0.2&apos;
-</code></pre><p>项目地址：<a href="https://github.com/dabutaizha/SlideDampingAnimationLayout" target="_blank" rel="external">https://github.com/dabutaizha/SlideDampingAnimationLayout</a></p>
-<p>欢迎大家star或者建议</p>
+        <p>自定义View 高仿即刻客户端侧滑回退动画</p>
+<h2 id="Gradle"><a href="#Gradle" class="headerlink" title="Gradle"></a>Gradle</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">dependencies &#123;</div><div class="line">    ...</div><div class="line">    implementation &apos;com.github.dabutaizha:SlideDampingAnimationLayout:v1.0.2&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">slideDampongAnimationLayout.SlideDampingAnimationLayout</span></span></div><div class="line"><span class="tag">    <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line"><span class="tag">    <span class="attr">xmlns:app</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">"@+id/search_result_slide_layout"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></div><div class="line"><span class="tag">    <span class="attr">app:bezier_curves_color</span>=<span class="string">"@color/black"</span></span></div><div class="line"><span class="tag">    <span class="attr">app:bezier_curves_type</span>=<span class="string">"quadratic_bezier_curves"</span></span></div><div class="line"><span class="tag">    <span class="attr">app:allow_gesture</span>=<span class="string">"only_left"</span>&gt;</span></div><div class="line">  </div><div class="line">    <span class="tag">&lt;<span class="name">--content--</span>&gt;</span></div><div class="line">  </div><div class="line"><span class="tag">&lt;/<span class="name">slideDampongAnimationLayout.SlideDampingAnimationLayout</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">mSlideAnimationLayout.setSlideListener(new SlideEventListener() &#123;</div><div class="line">            @Override</div><div class="line">            public void leftEvent() &#123;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            public void rightEvent() &#123;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div></pre></td></tr></table></figure>
+<p>原即刻APP效果</p>
+<p><img src="https://s2.ax1x.com/2019/06/21/Vzygb9.gif" width="300" hegiht="300" alt="“pic0”/"></p>
+<p>仿写效果</p>
+<p><img src="https://s2.ax1x.com/2019/06/21/Vzy338.gif" width="300" hegiht="300" alt="“pic2”/"></p>
 
       
     </div>
@@ -276,7 +246,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#目标效果"><span class="nav-number">1.</span> <span class="nav-text">目标效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#仿写思路"><span class="nav-number">2.</span> <span class="nav-text">仿写思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动画绘制思路"><span class="nav-number">3.</span> <span class="nav-text">动画绘制思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#扩展"><span class="nav-number">4.</span> <span class="nav-text">扩展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最后"><span class="nav-number">5.</span> <span class="nav-text">最后</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Gradle"><span class="nav-number">1.</span> <span class="nav-text">Gradle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Usage"><span class="nav-number">2.</span> <span class="nav-text">Usage</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">3.</span> <span class="nav-text">Code</span></a></li></ol>
     
     </div>
   </aside>
